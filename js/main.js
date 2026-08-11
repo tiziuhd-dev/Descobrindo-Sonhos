@@ -124,6 +124,50 @@
     }
   }
 
+  /* ============================================
+     COUNTDOWN TIMER — 10 minutos
+  ============================================ */
+  function initCountdown() {
+    var display = document.getElementById("countdown-display");
+    if (!display) return;
+
+    var DURATION = 10 * 60; // 10 minutos em segundos
+    var KEY = "dssonhos_countdown_end";
+
+    // Persiste o tempo final na sessão para não resetar ao rolar
+    var endTime = sessionStorage.getItem(KEY);
+    if (!endTime) {
+      endTime = Date.now() + DURATION * 1000;
+      sessionStorage.setItem(KEY, endTime);
+    } else {
+      endTime = parseInt(endTime, 10);
+    }
+
+    function tick() {
+      var remaining = Math.max(0, Math.floor((endTime - Date.now()) / 1000));
+      var mins = Math.floor(remaining / 60);
+      var secs = remaining % 60;
+      display.textContent = (mins < 10 ? "0" : "") + mins + ":" + (secs < 10 ? "0" : "") + secs;
+
+      // Urgência: últimos 60 segundos
+      if (remaining <= 60) {
+        display.classList.add("urgent");
+      } else {
+        display.classList.remove("urgent");
+      }
+
+      // Ao chegar em zero, reseta
+      if (remaining === 0) {
+        sessionStorage.removeItem(KEY);
+        endTime = Date.now() + DURATION * 1000;
+        sessionStorage.setItem(KEY, endTime);
+      }
+    }
+
+    tick();
+    setInterval(tick, 1000);
+  }
+
   document.addEventListener("DOMContentLoaded", function () {
     initHeaderScroll();
     initStickyCta();
@@ -131,5 +175,6 @@
     initAccordion();
     initSmoothScroll();
     setFooterYear();
+    initCountdown();
   });
 })();
