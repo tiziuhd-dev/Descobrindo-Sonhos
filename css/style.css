@@ -355,15 +355,32 @@ button{font-family:inherit;border:none;background:none;cursor:pointer;}
   font-size:1rem;
   color:var(--navy);
 }
+.identificacao-fechamento{
+  margin-top:28px;
+  padding-top:24px;
+  border-top:1px solid var(--gray-light);
+}
+.identificacao-fechamento p{
+  font-size:.95rem;
+  color:#4a5967;
+  margin-bottom:10px;
+}
+.identificacao-frase{
+  font-family:var(--font-title);
+  font-size:1.35rem !important;
+  font-weight:700;
+  color:var(--navy) !important;
+  line-height:1.3;
+}
 
 /* ===== Mecanismo ===== */
 .mecanismo{background:var(--navy-deep);text-align:center;}
 .flow{
   display:flex;
-  align-items:center;
+  align-items:flex-start;
   justify-content:center;
-  gap:10px;
-  margin:28px 0 30px;
+  gap:8px;
+  margin:28px 0 24px;
   flex-wrap:wrap;
 }
 .flow-step{
@@ -371,22 +388,129 @@ button{font-family:inherit;border:none;background:none;cursor:pointer;}
   flex-direction:column;
   align-items:center;
   gap:6px;
-  font-weight:700;
   color:var(--cream);
-  font-size:.85rem;
+  font-size:.82rem;
+  max-width:110px;
+  text-align:center;
 }
 .flow-step span{
-  width:36px;height:36px;
+  width:38px;height:38px;
   border-radius:50%;
   background:linear-gradient(135deg,var(--gold-soft),var(--gold));
   color:var(--navy-deep);
   display:flex;align-items:center;justify-content:center;
   font-family:var(--font-title);font-weight:700;
+  flex-shrink:0;
 }
-.flow i{color:var(--gold);opacity:.6;font-size:.8rem;}
+.flow-step strong{
+  font-weight:700;
+  color:var(--gold-soft);
+  font-size:.85rem;
+}
+.flow-step em{
+  font-style:normal;
+  color:var(--gray-light);
+  font-size:.75rem;
+  line-height:1.4;
+}
+.flow-arrow{color:var(--gold);opacity:.5;font-size:.8rem;margin-top:18px;flex-shrink:0;}
+.mecanismo-conclusao{
+  font-size:.92rem;
+  color:var(--gray-light);
+  text-align:center;
+  max-width:420px;
+  margin:0 auto;
+  line-height:1.6;
+}
+.mecanismo-conclusao strong{color:var(--cream);}
 .mecanismo .btn{margin:0 auto;}
 
-/* ===== Produto ===== */
+/* ===== Produto Apresentação ===== */
+.produto-apresentacao{background:var(--cream);text-align:center;}
+.produto-apresentacao .hero-img{margin-top:20px;margin-bottom:20px;}
+.produto-diferenciais{
+  list-style:none;
+  text-align:left;
+  margin:20px 0 28px;
+}
+.produto-diferenciais li{
+  display:flex;
+  align-items:flex-start;
+  gap:10px;
+  margin-bottom:12px;
+  font-size:.95rem;
+  color:#2c3a45;
+  line-height:1.5;
+}
+.produto-diferenciais li i{color:var(--gold);margin-top:3px;flex-shrink:0;}
+.produto-apresentacao .btn{margin:0 auto;}
+
+/* ===== Seção Aprender (nova) ===== */
+.aprender{background:var(--navy-deep);text-align:center;}
+.aprender-lista{
+  list-style:none;
+  text-align:left;
+  margin-top:24px;
+}
+.aprender-lista li{
+  display:flex;
+  align-items:flex-start;
+  gap:12px;
+  margin-bottom:16px;
+  color:var(--gray-light);
+  font-size:.95rem;
+  line-height:1.5;
+}
+.aprender-lista li i{color:var(--gold);flex-shrink:0;margin-top:3px;}
+.aprender-lista li strong{color:var(--cream);}
+
+/* ===== Quebra de Crença (nova) ===== */
+.quebracrenca{background:var(--navy);text-align:center;}
+.quebracrenca-texto{
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+  margin:24px 0;
+  text-align:left;
+}
+.quebracrenca-texto p{
+  font-size:.95rem;
+  color:var(--gray-light);
+  line-height:1.6;
+}
+.quebracrenca-pontos{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+  padding:16px 18px;
+  background:rgba(212,175,55,.08);
+  border-left:3px solid var(--gold);
+  border-radius:0 var(--radius-md) var(--radius-md) 0;
+}
+.quebracrenca-pontos span{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  font-size:.9rem;
+  color:var(--cream);
+  font-weight:600;
+}
+.quebracrenca-pontos i{color:var(--gold);font-size:.65rem;flex-shrink:0;}
+.quebracrenca-cta{
+  font-size:1rem;
+  font-weight:700;
+  color:var(--cream);
+  text-align:center;
+  padding:18px 20px;
+  background:rgba(212,175,55,.1);
+  border:1px solid rgba(212,175,55,.3);
+  border-radius:var(--radius-md);
+  margin-top:8px;
+  line-height:1.5;
+}
+.quebracrenca-cta strong{color:var(--gold-soft);}
+
+/* ===== Produto (entregáveis) ===== */
 .produto{background:#fff;text-align:left;}
 .check-list li{
   display:flex;
@@ -398,6 +522,27 @@ button{font-family:inherit;border:none;background:none;cursor:pointer;}
 }
 .check-list li i{color:var(--gold);margin-top:3px;flex-shrink:0;}
 .check-list.sm li{font-size:.9rem;margin-bottom:9px;}
+/* Entregáveis com descrição */
+.entregaveis li{
+  flex-direction:row;
+  align-items:flex-start;
+  margin-bottom:16px;
+}
+.entregaveis li div{
+  display:flex;
+  flex-direction:column;
+  gap:3px;
+}
+.entregaveis li strong{
+  font-size:.95rem;
+  color:var(--navy);
+  font-weight:700;
+}
+.entregaveis li span{
+  font-size:.84rem;
+  color:#5a6b78;
+  line-height:1.45;
+}
 
 /* ===== Benefícios ===== */
 .beneficios{background:var(--navy);text-align:center;}
@@ -415,10 +560,12 @@ button{font-family:inherit;border:none;background:none;cursor:pointer;}
   display:flex;
   flex-direction:column;
   align-items:center;
-  gap:8px;
+  gap:6px;
+  text-align:center;
 }
 .beneficio i{color:var(--gold);font-size:1.3rem;}
-.beneficio span{color:var(--cream);font-weight:600;font-size:.9rem;}
+.beneficio strong{color:var(--cream);font-weight:700;font-size:.9rem;display:block;}
+.beneficio span{color:var(--gray-light);font-size:.78rem;line-height:1.4;}
 
 /* ===== Bônus ===== */
 .bonus{background:var(--cream);}
@@ -463,6 +610,12 @@ button{font-family:inherit;border:none;background:none;cursor:pointer;}
   color:var(--cream);
   margin-bottom:4px;
 }
+.plano-para{
+  font-size:.82rem;
+  color:rgba(248,245,237,.55);
+  margin-bottom:12px;
+  font-style:italic;
+}
 .preco{
   font-family:var(--font-title);
   font-size:2.1rem;
@@ -470,7 +623,7 @@ button{font-family:inherit;border:none;background:none;cursor:pointer;}
   color:var(--gold-soft);
   margin-bottom:14px;
 }
-.nota{color:var(--gray-light);font-size:.85rem;margin-bottom:14px;}
+.nota{color:var(--gray-light);font-size:.82rem;margin-bottom:14px;line-height:1.5;}
 .plano .check-list{text-align:left;margin-bottom:20px;}
 .plano .check-list li{color:var(--gray-light);}
 .plano-top{
@@ -537,7 +690,15 @@ button{font-family:inherit;border:none;background:none;cursor:pointer;}
 }
 .selo-garantia i{font-size:1.5rem;margin-bottom:4px;}
 .selo-garantia span{font-family:var(--font-title);font-weight:700;font-size:.95rem;}
-.garantia .lead{margin-bottom:20px;}
+.garantia .lead{margin-bottom:10px;}
+.garantia-detalhe{
+  font-size:.84rem;
+  color:#7a8a98;
+  text-align:center;
+  max-width:380px;
+  margin:0 auto 20px;
+  line-height:1.6;
+}
 .garantia .btn{margin:0 auto;}
 
 /* ===== FAQ ===== */
@@ -577,14 +738,55 @@ button{font-family:inherit;border:none;background:none;cursor:pointer;}
   text-align:center;
   padding:64px 0;
 }
+.cta-final-sub{
+  font-size:.95rem;
+  color:var(--gray-light);
+  margin:16px 0 6px;
+}
+.plano-label{
+  font-size:.78rem;
+  font-weight:700;
+  letter-spacing:1.5px;
+  text-transform:uppercase;
+  color:var(--gold);
+  margin-bottom:4px;
+}
 .preco-final{
   font-family:var(--font-title);
   font-size:2.4rem;
   font-weight:700;
   color:var(--gold-soft);
-  margin:6px 0 22px;
+  margin:4px 0 22px;
 }
 .cta-final .btn{margin:0 auto;}
+
+/* ===== Fechamento Emocional (novo) ===== */
+.fechamento-emocional{
+  background:var(--navy-deep);
+  text-align:center;
+  padding:52px 0;
+  border-top:1px solid rgba(212,175,55,.15);
+}
+.fechamento-texto{
+  font-size:.9rem;
+  color:rgba(248,245,237,.55);
+  margin-bottom:8px;
+  font-weight:500;
+}
+.fechamento-pergunta{
+  font-family:var(--font-title);
+  font-size:1.5rem;
+  font-weight:700;
+  color:var(--cream);
+  margin-bottom:14px;
+  line-height:1.3;
+}
+.fechamento-resposta{
+  font-size:1rem;
+  color:var(--gold-soft);
+  font-weight:600;
+  letter-spacing:.3px;
+}
 
 /* ===== Footer ===== */
 .site-footer{
