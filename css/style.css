@@ -174,45 +174,51 @@ button{font-family:inherit;border:none;background:none;cursor:pointer;}
   display:flex;
   align-items:center;
   justify-content:center;
-  gap:10px;
-  flex-wrap:wrap;
+  gap:8px;
+  flex-wrap:nowrap;
   font-family:var(--font-body);
   font-size:.72rem;
   font-weight:800;
   letter-spacing:.8px;
   text-transform:uppercase;
   color:var(--cream);
-  padding:0 16px;
+  padding:0 12px;
   position:relative;
   z-index:1;
+  width:100%;
+  overflow:hidden;
 }
 .announcement-offer{
   display:flex;
   align-items:center;
-  gap:6px;
+  gap:5px;
   color:var(--cream);
+  white-space:nowrap;
+  flex-shrink:0;
 }
 .announcement-bell{
   color:var(--gold);
-  font-size:.85rem;
+  font-size:.82rem;
   animation:ring .8s ease-in-out infinite alternate;
+  flex-shrink:0;
 }
 @keyframes ring{
   0%{transform:rotate(-12deg);} 100%{transform:rotate(12deg);}
 }
 .countdown-display{
   font-family:var(--font-title);
-  font-size:.95rem;
+  font-size:.92rem;
   font-weight:700;
   color:var(--gold-soft);
   letter-spacing:2px;
   background:rgba(212,175,55,.12);
   border:1px solid rgba(212,175,55,.4);
-  padding:2px 10px;
+  padding:2px 8px;
   border-radius:6px;
-  min-width:52px;
+  min-width:48px;
   text-align:center;
   transition:background .3s;
+  flex-shrink:0;
 }
 .countdown-display.urgent{
   color:#ff6b6b;
@@ -223,21 +229,31 @@ button{font-family:inherit;border:none;background:none;cursor:pointer;}
 @keyframes pulse-urgent{
   0%{opacity:.7;} 100%{opacity:1;}
 }
+/* Ocultar separador e texto de segurança em mobile — aparecem só em telas maiores */
 .announcement-sep{
+  display:none;
   color:rgba(212,175,55,.4);
   font-size:.9rem;
 }
 .announcement-secure{
-  display:flex;
+  display:none;
   align-items:center;
   gap:5px;
   color:rgba(248,245,237,.7);
   font-size:.68rem;
   font-weight:700;
+  white-space:nowrap;
+  flex-shrink:0;
 }
 .announcement-secure i{
   color:var(--gold);
   font-size:.75rem;
+}
+/* Mostrar separador e segurança em telas maiores */
+@media (min-width:520px){
+  .announcement-sep{display:inline;}
+  .announcement-secure{display:flex;}
+  .announcement-inner{gap:10px;}
 }
 
 /* ===== HERO ===== */
