@@ -259,7 +259,7 @@ button{font-family:inherit;border:none;background:none;cursor:pointer;}
 /* ===== HERO ===== */
 .hero{
   position:relative;
-  padding:82px 0 36px;
+  padding:100px 0 52px;
   background:radial-gradient(circle at 50% 0%, #14263D 0%, var(--navy) 45%, var(--navy-deep) 100%);
   overflow:hidden;
   text-align:center;
@@ -299,17 +299,18 @@ button{font-family:inherit;border:none;background:none;cursor:pointer;}
 .hero-title{
   font-family:var(--font-title);
   font-weight:700;
-  font-size:1.62rem;
+  font-size:1.72rem;
   line-height:1.22;
   color:var(--cream);
-  margin-bottom:10px;
+  margin-bottom:18px;
 }
 .hero-sub{
-  font-size:.92rem;
+  font-size:.98rem;
   color:var(--gray-light);
-  margin-bottom:18px;
+  margin-bottom:28px;
   max-width:400px;
   margin-left:auto;margin-right:auto;
+  opacity:.85;
 }
 .hero-img{
   width:260px;
@@ -339,6 +340,26 @@ button{font-family:inherit;border:none;background:none;cursor:pointer;}
 
 /* ===== Identificação ===== */
 .identificacao{background:var(--cream);text-align:center;}
+/* Frase de abertura emocional (vinda do hero) */
+.identificacao-abertura{
+  font-family:var(--font-title);
+  font-size:1.18rem;
+  font-weight:600;
+  color:var(--navy);
+  line-height:1.4;
+  margin-bottom:10px;
+}
+.identificacao-abertura em{
+  color:var(--gold);
+  font-style:italic;
+}
+/* Frase de ponte antes das buscas */
+.identificacao-intro{
+  font-size:.92rem;
+  color:#5a6b78;
+  margin-bottom:22px;
+  line-height:1.6;
+}
 .quote-row{
   display:flex;
   flex-direction:column;
@@ -1041,6 +1062,229 @@ button{font-family:inherit;border:none;background:none;cursor:pointer;}
 }
 
 /* =====================================================
+   VEJA POR DENTRO — Seção de carrossel de páginas
+===================================================== */
+.veja-dentro{
+  background:var(--cream);
+  text-align:center;
+  overflow:hidden;
+  padding-bottom:0;
+}
+.veja-dentro .eyebrow{color:var(--gold);}
+.veja-dentro .title{color:var(--navy);}
+.veja-dentro .sub{color:#4a5967;margin-bottom:28px;}
+
+/* --- Carrossel externo (full-bleed) --- */
+.carousel-outer{
+  position:relative;
+  width:100%;
+  overflow:hidden;
+  cursor:grab;
+  user-select:none;
+  -webkit-user-select:none;
+  margin:0 0 0 0;
+  padding:4px 0 8px;
+}
+.carousel-outer:active{cursor:grabbing;}
+
+.carousel-track{
+  display:flex;
+  gap:16px;
+  padding:8px 20px 20px;
+  will-change:transform;
+  transition:transform .35s cubic-bezier(.25,.46,.45,.94);
+  /* Permite o padding lateral sem quebrar o overflow */
+  box-sizing:content-box;
+}
+
+/* --- Slide --- */
+.carousel-slide{
+  flex:0 0 82vw;
+  max-width:340px;
+  min-width:240px;
+  position:relative;
+}
+.carousel-slide img{
+  width:100%;
+  height:auto;
+  border-radius:10px;
+  box-shadow:0 8px 32px rgba(7,20,38,.18), 0 2px 8px rgba(7,20,38,.10);
+  display:block;
+  transition:transform .25s ease, box-shadow .25s ease;
+  border:1px solid rgba(212,175,55,.15);
+  background:var(--cream);
+}
+.carousel-slide img:hover{
+  transform:translateY(-3px);
+  box-shadow:0 14px 40px rgba(7,20,38,.22), 0 4px 12px rgba(212,175,55,.12);
+  cursor:zoom-in;
+}
+
+/* --- Setas --- */
+.carousel-arrow{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  z-index:10;
+  width:40px;height:40px;
+  border-radius:50%;
+  background:var(--navy);
+  border:1.5px solid rgba(212,175,55,.4);
+  color:var(--gold-soft);
+  display:flex;align-items:center;justify-content:center;
+  font-size:.85rem;
+  cursor:pointer;
+  box-shadow:0 4px 16px rgba(7,20,38,.28);
+  transition:background .2s ease, transform .2s ease, opacity .2s ease;
+  opacity:0.85;
+}
+.carousel-arrow:hover{
+  background:var(--navy-secondary);
+  opacity:1;
+  transform:translateY(-50%) scale(1.07);
+}
+.carousel-arrow:active{transform:translateY(-50%) scale(.95);}
+.carousel-arrow-prev{left:10px;}
+.carousel-arrow-next{right:10px;}
+.carousel-arrow.hidden{opacity:0;pointer-events:none;}
+
+/* --- Dots --- */
+.carousel-dots{
+  display:flex;
+  justify-content:center;
+  gap:8px;
+  padding:4px 0 20px;
+}
+.carousel-dot{
+  width:8px;height:8px;
+  border-radius:50%;
+  background:rgba(13,27,42,.18);
+  border:none;
+  cursor:pointer;
+  padding:0;
+  transition:background .25s ease, transform .25s ease, width .25s ease;
+}
+.carousel-dot.active{
+  background:var(--gold);
+  width:22px;
+  border-radius:999px;
+}
+
+/* --- Texto abaixo do carrossel --- */
+.veja-dentro-texto{
+  padding:32px 0 48px;
+  text-align:center;
+}
+.veja-dentro-destaque{
+  font-family:var(--font-title);
+  font-size:1.28rem;
+  font-weight:700;
+  color:var(--navy);
+  margin-bottom:10px;
+  line-height:1.3;
+}
+.veja-dentro-sub{
+  font-size:.95rem;
+  color:#4a5967;
+  line-height:1.6;
+  margin-bottom:28px;
+  max-width:420px;
+  margin-left:auto;
+  margin-right:auto;
+}
+.veja-dentro-beneficios{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  margin-bottom:28px;
+  text-align:left;
+}
+.veja-beneficio{
+  display:flex;
+  flex-direction:column;
+  gap:3px;
+  padding:16px 18px;
+  background:#fff;
+  border:1px solid var(--gray-light);
+  border-left:3px solid var(--gold);
+  border-radius:0 var(--radius-md) var(--radius-md) 0;
+}
+.veja-beneficio-titulo{
+  font-weight:700;
+  font-size:.95rem;
+  color:var(--navy);
+}
+.veja-beneficio-desc{
+  font-size:.86rem;
+  color:#4a5967;
+  line-height:1.5;
+}
+.veja-dentro-fechamento{
+  font-family:var(--font-title);
+  font-size:1.02rem;
+  font-weight:600;
+  color:var(--navy);
+  line-height:1.5;
+  margin-bottom:28px;
+  font-style:italic;
+  padding:20px 18px;
+  background:rgba(212,175,55,.07);
+  border:1px solid rgba(212,175,55,.2);
+  border-radius:var(--radius-md);
+}
+
+/* --- Lightbox --- */
+.lightbox-overlay{
+  display:none;
+  position:fixed;
+  inset:0;
+  z-index:9000;
+  background:rgba(7,20,38,.92);
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  backdrop-filter:blur(6px);
+  -webkit-backdrop-filter:blur(6px);
+  cursor:zoom-out;
+  animation:lightboxIn .2s ease;
+}
+.lightbox-overlay.active{display:flex;}
+@keyframes lightboxIn{
+  from{opacity:0;} to{opacity:1;}
+}
+.lightbox-img{
+  max-width:min(90vw, 560px);
+  max-height:90vh;
+  border-radius:10px;
+  box-shadow:0 24px 64px rgba(0,0,0,.55);
+  object-fit:contain;
+  cursor:default;
+  animation:lightboxScale .22s cubic-bezier(.34,1.56,.64,1);
+}
+@keyframes lightboxScale{
+  from{transform:scale(.88);} to{transform:scale(1);}
+}
+.lightbox-close{
+  position:absolute;
+  top:16px;right:16px;
+  width:38px;height:38px;
+  border-radius:50%;
+  background:rgba(248,245,237,.12);
+  border:1px solid rgba(248,245,237,.25);
+  color:var(--cream);
+  font-size:1.1rem;
+  cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  transition:background .2s ease;
+}
+.lightbox-close:hover{background:rgba(248,245,237,.22);}
+
+/* ===== BENEFÍCIOS — responsividade cards altos ===== */
+@media (max-width:380px){
+  .beneficios-grid{grid-template-columns:1fr;}
+}
+
+/* =====================================================
    Ajuste leve para telas maiores (tablet/desktop)
    — mantém a experiência estritamente centrada e compacta,
    sem redesenhar em grid largo, pois o foco é mobile.
@@ -1059,4 +1303,19 @@ button{font-family:inherit;border:none;background:none;cursor:pointer;}
     padding:0 14px;
     transform:rotate(-90deg);
   }
+  /* Carrossel desktop: slide maior */
+  .carousel-slide{
+    flex:0 0 68vw;
+    max-width:380px;
+  }
+  .carousel-track{
+    padding:8px 80px 20px;
+    gap:20px;
+  }
+  .carousel-arrow{
+    width:44px;height:44px;
+    font-size:.95rem;
+  }
+  .carousel-arrow-prev{left:16px;}
+  .carousel-arrow-next{right:16px;}
 }
